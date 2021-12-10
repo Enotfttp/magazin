@@ -7,7 +7,7 @@ left: 50%;
 transform: translateX(-50%);
 h2{
 	text-align: center;
-	font-size:24px;
+	font-size:30px;
 }
 label{
 	font-size:14px;
@@ -15,17 +15,26 @@ label{
 }
 input{
 	display: block;
+	width: 400px;
+	height: 30px;
 	padding: 5px 10px;
 	font-size: 16px;
-	margin: 10px 0px;
+	margin: 5px 0 10px 0px;
+	border-radius: 10px;
+	border:2px solid grey;
 }
+&>div{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	button{
+		margin: 20px 30px 0px 95px;
+		font-size: 16px;
+		width:200px;
+		height: 40px;
+		border-radius:10px ;
+	}
 
-button{
-	display:block;
-	margin: 0px auto;
-	font-size: 16px;
-	width:100px;
-	height: 40px;
 }
 
 `
