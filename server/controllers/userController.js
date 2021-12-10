@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 
 const generateJwt = (id, email, role) => {
 	return jwt.sign(
-		{ id: user.id, email, role },
+		{ id, email, role },
 		process.env.SECRET_KEY,
 		{ expiresIn: '24h' })
 }
@@ -20,12 +20,11 @@ class UserController {
 		if (candidate) {
 			return next(ApiError.badRequest('Пользователь с таким email уже существует'))
 		}
-		const hashPassword = await bcryptn.hash(password, 5)
-		const user = await User.create({ email, role, password: hashPassword })
+		const hashPassword = await bcrypt.hash(password, 5)
+		const user = await User.create({ email, password: hashPassword, role })
 		const basket = await Basket.create({ userId: user.id })
 		const jwt = generateJwt(user.id, user.email, user.role)
-
-		return res.json({ token })
+		return res.json({ email, password })
 	}
 	async login(req, res, next) {
 		const { email, password } = req.body
