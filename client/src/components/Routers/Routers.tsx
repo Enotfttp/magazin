@@ -1,3 +1,4 @@
+import { observable } from "mobx";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Login from "../Login/Login";
@@ -9,6 +10,9 @@ import ProtectedRouters from "./ProtectedRouters";
 class Routers extends React.Component {
 
 	render() {
+
+		console.log();
+
 		return (
 			<Router>
 				<Routes>
@@ -17,7 +21,6 @@ class Routers extends React.Component {
 					<Route element={<ProtectedRouters />} >
 						<Route path="/profile" element={<Profile />} />
 						<Route path="/main" element={<Main />} />
-						{/*<Route path="/logout" element={<Logout />} />*/}
 					</Route >
 				</Routes>
 			</Router >
