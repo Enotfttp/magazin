@@ -5,8 +5,7 @@ export const postRegistr = (email: string, password: string, role: string) => {
 }
 
 export const postLogin = (email: string, password: string, role: string) => {
-	return postRequest(`/api/user/login`, {}, { email, password, role }).then((res) => res.data
-	)
+	return postRequest(`/api/user/login`, {}, { email, password, role }).then((res) => res.data)
 }
 
 export const getCheck = () => {

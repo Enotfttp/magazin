@@ -7,6 +7,9 @@ import LoginStyle from "./LoginStyle";
 
 @observer
 class Login extends React.Component {
+	constructor(props: any) {
+		super(props)
+	}
 
 	@observable login: string = "";
 	@observable password: string = "";
@@ -21,7 +24,13 @@ class Login extends React.Component {
 	}
 	loginButton = (): void => {
 		if (this.login && this.password) {
-			postLogin(this.login, this.password, "USER").then((res) => localStorage.setItem('token', res.token))
+
+			postLogin(this.login, this.password, "USER").then((res) => {
+				localStorage.setItem('token', res.token)
+				console.log("good");
+			}).catch((e) => {
+				console.log('error = ', e);
+			})
 		}
 	}
 
@@ -29,7 +38,6 @@ class Login extends React.Component {
 		return (
 			<>
 				<LoginStyle>
-
 					<h2>SIGN IN</h2>
 					<label>Логин</label>
 					<input onChange={(e: any) => this.setLogin(e.target.value)} type="text" />
@@ -39,7 +47,6 @@ class Login extends React.Component {
 						<button onClick={this.loginButton}>Войти</button>
 						<Link to="/registr">Регитрация</Link>
 					</div>
-
 				</LoginStyle>
 
 			</>
