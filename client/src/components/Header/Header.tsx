@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import HeaderStyled from "./HeaderStyled";
 
 function Header() {
 
@@ -9,12 +10,14 @@ function Header() {
 
 	return (
 		<>
-			<header>
-				<Link to="/profile">Home</Link>
-				<Link to="/main">Main</Link>
-				<Link to="/" onClick={() => logout()}>Выход</Link>
-			</header>
-			<Outlet />
+			<HeaderStyled>
+				<header>
+					<NavLink to="/profile" >Home</NavLink>
+					<NavLink to="/main">Main</NavLink>
+					<NavLink to="/" onClick={() => logout()} className="logout">Выход</NavLink>
+				</header>
+				<Outlet />
+			</HeaderStyled>
 		</>
 	)
 }
